@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <script type="text/javascript" src="/d3/d3.js"></script>
+
+
+
+    </head>
+
+
+    <body>
+		<div id="punchcard"></div>
+        <svg class="chart"></svg>
+        <script type="text/javascript"> //src = d3/d3.js?
+
+
+		var w = 940,
+    		h = 300,
+    		pad = 20,
+    		left_pad = 100,
+    		Data_url = 'Movies.csv';
+			
+		var svg = d3.select("#punchcard")
+	        .append("svg")
+	        .attr("width", w)
+	        .attr("height", h);
+			
+		var x = d3.scale.linear().domain([0, 200]).range([left_pad-26, w-pad]),
+		    y = d3.scale.linear().domain([100, 0]).range([pad, h-pad]);
+			
+		var xAxis = d3.svg.axis().scale(x).orient("bottom"),
+		    yAxis = d3.svg.axis().scale(y).orient("left");
+			
+		svg.append("g")
+		    .attr("class", "axis")
+		    .attr("transform", "translate(0, "+(h-pad)+")")
+		    .call(xAxis);
+ 
+		svg.append("g")
+		    .attr("class", "axis")
+		    .attr("transform", "translate("+(left_pad-pad)+", 0)")
+		    .call(yAxis);
+	
+	
+        </script>
+    </body>
+</html>
